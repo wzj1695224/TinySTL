@@ -1,26 +1,54 @@
 #include "AlgorithmTest.h"
 
-namespace TinySTL{
-	namespace AlgorithmTest{
-		void testFill(){
+namespace TinySTL
+{
+	namespace AlgorithmTest
+	{
+
+		void testFill()
+		{
 			std::vector<int> v1(8), v2(8);
-			std::fill(v1.begin(), v1.begin() + 4, 5);   //5 5 5 5 0 0 0 0
-			std::fill(v1.begin() + 3, v1.end() - 2, 8);   //5 5 5 8 8 8 0 0
-			TinySTL::fill(v2.begin(), v2.begin() + 4, 5);   //5 5 5 5 0 0 0 0
-			TinySTL::fill(v2.begin() + 3, v2.end() - 2, 8);   //5 5 5 8 8 8 0 0
-
+			std::fill(v1.begin(), v1.begin() + 4, 5);		// 5 5 5 5 0 0 0 0
+			std::fill(v1.begin() + 3, v1.end() - 2, 8);		// 5 5 5 8 8 8 0 0
+			TinySTL::fill(v2.begin(), v2.begin() + 4, 5);	// 5 5 5 5 0 0 0 0
+			TinySTL::fill(v2.begin() + 3, v2.end() - 2, 8);	// 5 5 5 8 8 8 0 0
 			assert(TinySTL::Test::container_equal(v1, v2));
+
+			char sz[] = "11111111";
+			TinySTL::fill(sz, sz + 4, '3');			// 33331111
+			TinySTL::fill(sz + 3, sz + 6, '2');		// 33322211
+			assert(strcmp(sz, "33322211") == 0);
+
+			wchar_t wsz[] = L"一一一一一一一一";
+			TinySTL::fill(wsz, wsz + 4, L'三');			// 三三三三一一一一
+			TinySTL::fill(wsz + 3, wsz + 6, L'二');		// 三三三二二二一一
+			assert(wcscmp(wsz, L"三三三二二二一一") == 0);
 		}
-		void testFillN(){
+
+
+		void testFillN()
+		{
 			std::vector<int> v1(8, 10), v2(8, 10);
-			std::fill_n(v1.begin(), 4, 20);     //20 20 20 20 10 10 10 10
-			std::fill_n(v1.begin() + 3, 3, 33);   //20 20 20 33 33 33 10 10
-			TinySTL::fill_n(v2.begin(), 4, 20);     //20 20 20 20 10 10 10 10
-			TinySTL::fill_n(v2.begin() + 3, 3, 33);   //20 20 20 33 33 33 10 10
-
+			std::fill_n(v1.begin(), 4, 20);			// 20 20 20 20 10 10 10 10
+			std::fill_n(v1.begin() + 3, 3, 33);		// 20 20 20 33 33 33 10 10
+			TinySTL::fill_n(v2.begin(), 4, 20);		// 20 20 20 20 10 10 10 10
+			TinySTL::fill_n(v2.begin() + 3, 3, 33);	// 20 20 20 33 33 33 10 10
 			assert(TinySTL::Test::container_equal(v1, v2));
+
+			char sz[] = "11111111";
+			TinySTL::fill_n(sz, 4, '3');			// 33331111
+			TinySTL::fill_n(sz + 3, 3, '2');		// 33322211
+			assert(strcmp(sz, "33322211") == 0);
+
+			wchar_t wsz[] = L"一一一一一一一一";
+			TinySTL::fill_n(wsz, 4, L'三');			// 三三三三一一一一
+			TinySTL::fill_n(wsz + 3, 3, L'二');		// 三三三二二二一一
+			assert(wcscmp(wsz, L"三三三二二二一一") == 0);
 		}
-		void testMinMax(){
+
+
+		void testMinMax()
+		{
 			assert(TinySTL::min(1, 2) == 1);
 			assert(TinySTL::min(2, 1) == 1);
 			assert(TinySTL::min('a', 'z') == 'a');
@@ -31,7 +59,10 @@ namespace TinySTL{
 			assert(TinySTL::max('a', 'z') == 'z');
 			assert(TinySTL::max(3.14, 2.73) == 3.14);
 		}
-		void testHeapAlgorithm(){
+
+
+		void testHeapAlgorithm()
+		{
 			int myints[] = { 10, 20, 30, 5, 15 };
 			std::vector<int> v1(myints, myints + 5);
 			std::vector<int> v2(myints, myints + 5);
@@ -260,7 +291,9 @@ namespace TinySTL{
 			assert(TinySTL::Test::container_equal(arr4, res4));
 		}
 
-		void testAllCases(){
+
+		void testAllCases()
+		{
 			testFill();
 			testFillN();
 			testMinMax();

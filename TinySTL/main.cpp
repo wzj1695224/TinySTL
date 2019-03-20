@@ -29,7 +29,9 @@
 
 using namespace TinySTL::Profiler;
 
-int main(){
+
+int main()
+{
 	TinySTL::AlgorithmTest::testAllCases();
 	TinySTL::AVLTreeTest::testAllCases();
 	TinySTL::BitmapTest::testAllCases();
